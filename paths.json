@@ -1,0 +1,7 @@
+{
+   "silo": {
+      "windows": "c:/Program Files",
+      "linux": "/opt"
+   },
+   "default_media": "C:/media/default_media",
+}
