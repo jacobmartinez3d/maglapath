@@ -16,7 +16,7 @@ import platform
 import json
 
 # this should be an environment variable methinks
-PATHS_CONFIG = "c:\\users\\jacob\\dev\\msgv.testsite.laserdome\\data\\paths.json"
+PATHS_CONFIG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "paths.json")
 
 class Path(str):
     """str-wrapper to allow handling of paths containing tokens."""
