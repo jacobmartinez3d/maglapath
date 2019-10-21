@@ -16,10 +16,10 @@ import platform
 import json
 
 # this should be an environment variable methinks
-PATHS_CONFIG = "c:\\users\\jacob\\dev\\msgv.testsite.laserdome\\data\\paths.json"
+PATHS_CONFIG = r"C:\projects\msgv.testsite.laserdome\data\paths.json"
 
 class Path(str):
-    """str-wrapper to allow handling of paths containing tokens."""
+    """str-wrapper to allow handaling of paths containing tokens."""
     
     SYSTEM = platform.system().lower()
     
@@ -62,8 +62,7 @@ class Path(str):
         """
         if cls.is_resolved(str_):
             # make sure to return with defined sep if one was supplied
-            print(str_)
-            return str_ if not sep else re.sub(cls.__sep_re, re.escape(sep), re.escape(str_))
+            return str_ if not sep else re.sub(cls.__sep_re, sep, str_)
             # return str_
 
         segs = []
@@ -79,7 +78,7 @@ class Path(str):
             sep = sep_ or sep
 
         # if we get here and still have no defined sep, use default os.sep
-        sep = sep or os.sep
+        sep = sep or os.sep.replace("\\", re.escape("\\"))
 
         # recurse
         return cls.resolve(sep.join(segs), sep)
